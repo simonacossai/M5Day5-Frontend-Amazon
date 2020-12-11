@@ -22,7 +22,7 @@ export default class Home extends Component {
       console.log(e);
     }
   };
-  //   deleteProducts = async (titles) => {
+  //   deleteProducts = async () => {
   //     try {
   //       const url = `http://localhost:3001/products/${id}`;
   //       const response = await fetch(url, {
