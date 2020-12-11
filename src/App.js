@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from './components/NavBar';
 import Home from './components/Home.jsx'
 import AddProduct from './components/AddProduct';
+import Details from './components/Details';
 
 function App() {
   return (
@@ -23,6 +24,13 @@ function App() {
             render={(
               props 
             ) => <AddProduct  {...props}/>} 
+          />
+            <Route
+            path="/details/:id"
+            exact
+            render={(
+              props 
+            ) => <Details  {...props}/>} 
           />
         
     </Router>
