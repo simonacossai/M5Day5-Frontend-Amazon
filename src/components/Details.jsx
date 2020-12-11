@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Media, Container, Row, Col, Spinner, Alert, Form, Button, Badge } from 'react-bootstrap'
+import {BsFillTrashFill} from 'react-icons/bs';
+import {BsPencilSquare} from 'react-icons/bs';
 export default class Details extends Component {
 
     state = {
@@ -42,6 +44,17 @@ export default class Details extends Component {
         newReview[currentId] = e.currentTarget.value
         this.setState({ newReview: newReview })
     }
+    handleDelete = async (id) => {
+
+        const url= "http://localhost:3001/reviews/"
+        const res = await fetch( url + id, {
+          method: "DELETE",
+        })
+        if (res.ok) {
+            this.fetchReviews();
+          alert("review deleted");
+        }
+      }
 
 
     submitnewReview = async (e) => {
@@ -169,7 +182,7 @@ export default class Details extends Component {
                     <Media.Body>
                         <h5>{e.name} -- <Badge className="rateBadge">{e.rate}</Badge></h5>
                         <p>
-                            {e.comment}
+                            {e.comment}   <BsFillTrashFill onClick={()=>this.handleDelete(e.ID)} className="ml-5 mr-2"/> <BsPencilSquare/>
                         </p>
                     </Media.Body>
                 </Media>)}   

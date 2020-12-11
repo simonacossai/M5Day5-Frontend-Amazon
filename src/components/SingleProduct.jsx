@@ -5,9 +5,9 @@ import './SingleProduct.css';
 export default class SingleProduct extends Component {
     render() {
         return (
-                <Col md={3}>
+                <Col md={4}>
                   <Card  className="card p-1 mb-2">
-                        <Card.Img variant="top" src={this.props.product.image} />
+                        <img variant="top" src={this.props.product.image} className="product-image "/>
                         <Card.Body>
                           <Card.Title>{this.props.product.name}</Card.Title>
                           <Card.Text className="description">

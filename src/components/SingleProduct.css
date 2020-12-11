@@ -1,6 +1,8 @@
 .card{
     border-radius: 18px;
     border-bottom: 6px solid #3E78B2;
+    box-shadow: 3px 3px 16px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
 }
 .description{
     overflow: hidden;
@@ -21,4 +23,12 @@
     color: white;
     width: 60px;
     padding: 3px;
+}
+.product-image{
+    height: 350px;
+    width:100%;
+    object-fit: cover;
+}
+button{
+    background-color: #3E78B2!important;
 }

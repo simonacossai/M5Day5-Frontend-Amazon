@@ -122,8 +122,8 @@ class AddProduct extends React.Component {
                     ) :
 
                         (
-                            <Container className="d-flex justify-content-center align-items-center text-center">
-                                <Form className="w-100 mb-5 mt-5 d-flex justify-content-center align-items-center text-center" style={{ flexDirection: "column" }} onSubmit={this.submitnewProduct}>
+                            <Container className="d-flex p-5 justify-content-center align-items-center text-center">
+                                <Form className="w-100 mt-3 d-flex justify-content-center align-items-center text-center" style={{ flexDirection: "column" }} onSubmit={this.submitnewProduct}>
                                     <Col md={6}>
                                         <Form.Group>
                                             <Form.Label htmlFor="name">Name</Form.Label>
