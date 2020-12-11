@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Media, Container, Row, Col } from 'react-bootstrap'
+import { Media, Container, Row, Col, Spinner, Alert, Form, Button, Badge } from 'react-bootstrap'
 export default class Details extends Component {
 
     state = {
@@ -87,9 +87,78 @@ export default class Details extends Component {
     }
     render() {
         return (
-            <Container>
-                <h1>hiiii</h1>
-                {this.state.reviews && this.state.reviews.map((e) => <Media>
+            <>
+            {
+                    this.state.loading && (
+                        <div className="d-flex justify-content-center my-5">
+                            Sendin your infos pls wait
+                            <div className="ml-2">
+                                <Spinner animation="border" variant="success" />
+                            </div>
+                        </div>
+                    )
+                }
+                {
+                    this.state.errMessage ? (
+                        <Alert variant="danger">
+                            We encountered a problem with your request
+                            {this.state.errMessage}
+                        </Alert>
+
+                    ) :
+
+                        (<Container className="d-flex justify-content-center align-items-center text-center w-100">
+                        <Form className="w-100 mb-5 mt-5 d-flex justify-content-center align-items-center text-center" style={{ flexDirection: "column" }} onSubmit={this.submitnewReview}>
+                                <Col md={6}>
+                                    <Form.Group>
+                                        <Form.Label htmlFor="name">Name</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="name"
+                                            id="name"
+                                            placeholder="Your name"
+                                            value={this.state.newReview.name}
+                                            onChange={this.updatenewReviewField}
+                                            required
+                                        />
+                                    </Form.Group>
+                                </Col>
+                         
+                         
+                                <Col md={6}>
+                                    <Form.Group>
+                                        <Form.Label htmlFor="comment">Comment</Form.Label>
+                                      <Form.Control as="textarea" rows={3} 
+                                         type="text"
+                                         name="comment"
+                                         id="comment"
+                                         placeholder="What do u think about this project?"
+                                         value={this.state.newReview.comment}
+                                         onChange={this.updatenewReviewField}
+                                         required/>
+                                    </Form.Group>
+                                </Col>
+                                <Col md={6}>
+
+                                <Form.Group>
+                                        <Form.Label htmlFor="rate">Rate</Form.Label>
+                                      <Form.Control
+                                         type="number"
+                                         name="rate"
+                                         id="rate"
+                                         placeholder="Give it a rate.."
+                                         value={this.state.newReview.rate}
+                                         onChange={this.updatenewReviewField}
+                                         required/>
+                                    </Form.Group>
+                                </Col>
+                            <Button type="submit">Submit</Button>
+                        </Form>
+                    </Container>)}
+                   
+                <Container>
+                <h1 className="text-left my-4">Reviews</h1>
+                {this.state.reviews && this.state.reviews.map((e) => <Media className="reviewMedia">
                     <img
                         width={64}
                         height={64}
@@ -98,13 +167,14 @@ export default class Details extends Component {
                         alt="Generic placeholder"
                     />
                     <Media.Body>
-                        <h5>{e.name} -- {e.rate}</h5>
+                        <h5>{e.name} -- <Badge className="rateBadge">{e.rate}</Badge></h5>
                         <p>
                             {e.comment}
                         </p>
                     </Media.Body>
-                </Media>)}
-            </Container>
+                </Media>)}   
+                </Container>         
+                </>
         )
     }
 }

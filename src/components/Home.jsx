@@ -19,6 +19,7 @@ export default class Home extends Component {
             if (response.ok) {
                 const data = await response.json();
                 this.setState({ products: data });
+                console.log("aaa", data);
             }
         } catch (e) {
             console.log(e);

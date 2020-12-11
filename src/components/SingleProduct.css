@@ -9,3 +9,16 @@
    -webkit-line-clamp: 2; /* number of lines to show */
    -webkit-box-orient: vertical;
 }
+.reviewMedia{
+    border-right: 6px solid #3E78B2;
+    margin: 20px 0;
+    border-radius: 13px;
+    padding: 10px;
+    box-shadow: 3px 3px 16px rgba(0,0,0,0.2);
+}
+.rateBadge{
+    background-color: #3E78B2;
+    color: white;
+    width: 60px;
+    padding: 3px;
+}
