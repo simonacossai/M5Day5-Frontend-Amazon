@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Media, Container, Row, Col, Spinner, Alert, Form, Button, Badge } from 'react-bootstrap'
+import { Media, Container, Row, Col, Spinner, Alert, Form, Button, Badge, Modal } from 'react-bootstrap'
 import {BsFillTrashFill} from 'react-icons/bs';
 import {BsPencilSquare} from 'react-icons/bs';
 export default class Details extends Component {
@@ -14,9 +14,20 @@ export default class Details extends Component {
         errMessage: '',
         loading: false,
         reviews: [],
+        open: true,
+        show: false,
+        click: false,
+        id: "",
     }
 
-
+    handleClose = () => {
+        this.setState({ show: false });
+        this.setState({post:{ text: ""}})
+    }
+    handleShow = () => {
+        this.setState({ show: true });
+      
+    }
     fetchReviews = async () => {
         try {
             const url = `http://localhost:3001/reviews/${this.state.newReview.elementId}`
@@ -182,10 +193,24 @@ export default class Details extends Component {
                     <Media.Body>
                         <h5>{e.name} -- <Badge className="rateBadge">{e.rate}</Badge></h5>
                         <p>
-                            {e.comment}   <BsFillTrashFill onClick={()=>this.handleDelete(e.ID)} className="ml-5 mr-2"/> <BsPencilSquare/>
+                            {e.comment}   <BsFillTrashFill onClick={()=>this.handleDelete(e.ID)} className="ml-5 mr-2"/> <BsPencilSquare  onClick={() => this.handleShow()}/>
                         </p>
                     </Media.Body>
                 </Media>)}   
+
+                <Modal show={this.state.show} onHide={this.handleClose} animation={false}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Update your review!
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                       </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="primary" onClick={() => this.handleUpdate(this.props.post._id)} style={{backgroundColor:"white!important"}}>
+                                Save Changes
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Container>         
                 </>
         )
