@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import Home from './components/Home.jsx'
 import AddProduct from './components/AddProduct';
 import Details from './components/Details';
-
+import Cart from './components/Cart';
 function App() {
   return (
     <div className="App">
@@ -31,6 +31,13 @@ function App() {
             render={(
               props 
             ) => <Details  {...props}/>} 
+          />
+           <Route
+            path="/cart"
+            exact
+            render={(
+              props 
+            ) => <Cart  {...props}/>} 
           />
         
     </Router>

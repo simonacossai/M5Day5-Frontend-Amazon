@@ -21,6 +21,10 @@ class NavBar extends Component {
                             <Link to="/form">
                             <div className="nav-link">Add a product</div>
                             </Link>
+                            <Link to="/cart">
+                            <div className="nav-link">Cart</div>
+                            </Link>
+
 
                         </Nav>
                     </Navbar.Collapse>
